@@ -1,0 +1,33 @@
+---
+- hosts: minikube
+  remote_user: ubuntu
+  gather_facts: false
+  tasks:
+    # delete existing pod-file.yaml file
+    - name: delete-the-existing-pod-file
+      command: sudo rm /home/ubuntu/pod-file.yaml
+    # move the pod-file.yaml to minikube ce2 instance
+    - name: copy_file
+      copy:
+        src: /home/ubuntu/slave3/workspace/Pipeline/pod-file.yaml
+        dest: /home/ubuntu/
+    # delete existing pod
+    - name: delete-the-existing-pod-in-k8s
+      command: sudo kubectl delete pod parking
+    # create new pod
+    - name: create pod
+      command: sudo kubectl apply -f pod-file.yaml
+    # delete existing service-file.yaml file
+    - name: delete-the-existing-service-file
+      command: sudo rm /home/ubuntu/service-file.yaml
+    # move the service-file.yaml to minikube ce2 instance
+    - name: copy_file
+      copy:
+         src: /home/ubuntu/slave3/workspace/Pipeline/service-file.yaml
+         dest: /home/ubuntu/
+    # delete existing service
+    - name: delete-the-existing-service-in-k8s
+      command: sudo kubectl delete svc parking
+    # create new service
+    - name: create service
+      command: sudo kubectl apply -f service-file.yaml

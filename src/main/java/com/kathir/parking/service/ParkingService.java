@@ -43,8 +43,8 @@ public class ParkingService {
     }
 
     //delete the row from info database
-    public String deleteRowInInfo(Integer id) {
-        repositoryOfInfo.delete(id);
-        return "successfully Deleted";
-    }
+   // public String deleteRowInInfo(Integer id) {
+    //    repositoryOfInfo.delete(id);
+     //   return "successfully Deleted";
+    //}
 }

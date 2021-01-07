@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: parking
+  labels:
+    app: parking
+spec:
+  containers:
+    - name: parking
+      image: 071107458435.dkr.ecr.us-east-1.amazonaws.com/parking-back-end:latest
+      ports:
+        - containerPort: 7000

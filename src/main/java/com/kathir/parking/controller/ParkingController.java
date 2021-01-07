@@ -44,10 +44,13 @@ public class ParkingController {
     }
 
     //delete process in info database
-    @RequestMapping(value = "/info/{id}", method = RequestMethod.DELETE)
-    public String deleteRow(@PathVariable("id") Integer id ) {
-        return parkingService.deleteRowInInfo(id);
+    //@RequestMapping(value = "/info/{id}", method = RequestMethod.DELETE)
+    //public String deleteRow(@PathVariable("id") Integer id ) {
+     //   return parkingService.deleteRowInInfo(id);
 
+    //}
+    public static String testString(){
+        return "ExampleTest Successfully completed";
     }
 
 }
