@@ -17,6 +17,7 @@
     # create new pod
     - name: create pod
       command: sudo kubectl apply -f pod-file.yaml
+
     # delete existing service-file.yaml file
     - name: delete-the-existing-service-file
       command: sudo rm /home/ubuntu/service-file.yaml
