@@ -1,5 +1,5 @@
 ---
-- hosts: minikube
+- hostses: minikube
   remote_user: ubuntu
   gather_facts: false
   tasks:
