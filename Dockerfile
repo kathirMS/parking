@@ -10,7 +10,7 @@ ARG profile=testh2db
 ENV PROFILE=$profile
 
 #default mysql url
-ARG mysql_url=jdbc:mysql://23.22.164.0:3306/final
+ARG mysql_url=jdbc:mysql://52.207.242.71:3306/final
 ENV MYSQL_URL=$mysql_url
 
 
