@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: parking-front-end
+  labels:
+    app: parking-front-end
+spec:
+  containers:
+    - name: parking-front-end
+      image: 071107458435.dkr.ecr.us-east-1.amazonaws.com/parkinglot:latest
+      ports:
+        - containerPort: 80
