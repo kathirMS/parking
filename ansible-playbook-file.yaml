@@ -2,17 +2,21 @@
 - hosts: minikube
   remote_user: ubuntu
   gather_facts: false
+  vars:
+     src_path: /home/ubuntu/slave3/workspace/parking-pipeline-project/
+     dest_path: /home/ubuntu/
+
   tasks:
 
     #back-end
     # delete existing pod-file.yaml file
     - name: delete-the-existing-pod-file
-      command: sudo rm /home/ubuntu/pod-file.yaml
+      command: sudo rm "{{dest_path}}"pod-file.yaml
     # move the pod-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-        src: /home/ubuntu/slave3/workspace/parking-pipeline-project/pod-file.yaml
-        dest: /home/ubuntu/
+        src: "{{src_path}}"pod-file.yaml
+        dest: "{{dest_path}}"
     # delete existing pod
     - name: delete-the-existing-pod-in-k8s
       command: sudo kubectl delete pod parking
@@ -22,12 +26,12 @@
 
     # delete existing service-file.yaml file
     - name: delete-the-existing-service-file
-      command: sudo rm /home/ubuntu/service-file.yaml
+      command: sudo rm "{{dest_path}}"service-file.yaml
     # move the service-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-         src: /home/ubuntu/slave3/workspace/parking-pipeline-project/service-file.yaml
-         dest: /home/ubuntu/
+         src: "{{src_path}}"service-file.yaml
+         dest: "{{dest_path}}"
     # delete existing service
     - name: delete-the-existing-service-in-k8s
       command: sudo kubectl delete svc parking
@@ -38,12 +42,12 @@
       #front-end
     # delete existing pod-file.yaml file
     - name: delete-the-existing-pod-file1
-      command: sudo rm /home/ubuntu/pod-file1.yaml
+      command: sudo rm "{{dest_path}}"pod-file1.yaml
     # move the pod-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-        src: /home/ubuntu/slave3/workspace/parking-pipeline-project/pod-file1.yaml
-        dest: /home/ubuntu/
+        src: "{{src_path}}"pod-file1.yaml
+        dest: "{{dest_path}}"
     # delete existing pod
     - name: delete-the-existing-pod-in-k8s
       command: sudo kubectl delete pod parking-front-end
@@ -53,12 +57,12 @@
 
     # delete existing service-file.yaml file
     - name: delete-the-existing-service-file1
-      command: sudo rm /home/ubuntu/service-file1.yaml
+      command: sudo rm "{{dest_path}}"service-file1.yaml
     # move the service-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-        src: /home/ubuntu/slave3/workspace/parking-pipeline-project/service-file1.yaml
-        dest: /home/ubuntu/
+        src: "{{src_path}}"service-file1.yaml
+        dest: "{{dest_path}}"
     # delete existing service
     - name: delete-the-existing-service-in-k8s
       command: sudo kubectl delete svc parking-front-end
