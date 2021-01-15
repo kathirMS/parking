@@ -3,7 +3,8 @@
   remote_user: ubuntu
   gather_facts: false
   vars:
-     src_path: /home/ubuntu/slave3/workspace/parking-pipeline-project/
+     src_path: /home/ubuntu/slave3/workspace/parking-pipeline-project/pod-file.yaml
+     src_path1: /home/ubuntu/slave3/workspace/parking-pipeline-project/service-file.yaml
      dest_path: /home/ubuntu/
 
   tasks:
@@ -15,7 +16,7 @@
     # move the pod-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-        src: "{{src_path}} pod-file.yaml"
+        src: "{{src_path}}"
         dest: "{{dest_path}}"
     # delete existing pod
     - name: delete-the-existing-pod-in-k8s
@@ -30,7 +31,7 @@
     # move the service-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-         src: "{{src_path}} service-file.yaml"
+         src: "{{src_path1}}"
          dest: "{{dest_path}}"
     # delete existing service
     - name: delete-the-existing-service-in-k8s
@@ -46,7 +47,7 @@
     # move the pod-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-        src: "{{src_path}} pod-file1.yaml"
+        src: /home/ubuntu/slave3/workspace/parking-pipeline-project/pod-file1.yaml
         dest: "{{dest_path}}"
     # delete existing pod
     - name: delete-the-existing-pod-in-k8s
@@ -61,7 +62,7 @@
     # move the service-file.yaml to minikube ce2 instance
     - name: copy_file
       copy:
-        src: "{{src_path}} service-file1.yaml"
+        src:  /home/ubuntu/slave3/workspace/parking-pipeline-project/service-file1.yaml"
         dest: "{{dest_path}}"
     # delete existing service
     - name: delete-the-existing-service-in-k8s
