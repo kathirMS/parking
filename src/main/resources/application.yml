@@ -2,6 +2,6 @@ server:
   port: 7000
 spring:
   datasource:
-    url: jdbc:mysql://18.212.212.118:3306/final
+    url: jdbc:mysql://34.228.168.166:3306/final
     username: parking
     password: newpassword
