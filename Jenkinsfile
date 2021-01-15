@@ -34,7 +34,7 @@ pipeline {
 
         stage('deploy in k8s'){
                    steps{
-                        sh 'sudo ansible-playbook ansible-playbook-file.yaml -vv'
+                        sh 'sudo ansible-playbook ansible-playbook-file.yaml --extra-vars "src_path=${src_path_of_k8s_file} dest_path=${dest_path_of_k8s_file}" -vv'
                    }
 
         }
