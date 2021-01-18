@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://34.238.51.168:30087")
+@CrossOrigin(origins = "http://174.129.107.227:30087")
 public class ParkingController {
     @Autowired
     private ParkingService parkingService;
