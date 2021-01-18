@@ -28,6 +28,13 @@ pipeline {
            }
         }
 
+        stage("Ansible set ip address"){
+           steps{
+              sh script: $/
+                          sudo sed  -e'/minikube/ s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/'${public_ip}'/' /etc/ansible/hosts
+                    /$
+           }
+        }
         stage('deploy in k8s'){
                    steps{
                         sh 'sudo ansible-playbook ansible-playbook-file.yaml --extra-vars "src_path=${src_path_of_k8s_file} dest_path=${dest_path_of_k8s_file}" -vv'
@@ -35,13 +42,10 @@ pipeline {
 
         }
 
-
-
     }
    post {
          always {
                  junit '**/target/surefire-reports/TEST-*.xml'
-
          }
          success{
               emailext body: 'build is successfully completed', subject: 'From Jenkins', to: 'kathirvelmuthusamy96@gmail.com'
