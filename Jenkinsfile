@@ -33,7 +33,7 @@ pipeline {
               sh script: $/
                           sudo sed -i -e'/minikube/ s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/'${public_ip}'/' /etc/ansible/hosts
                     /$
-
+                   sh '>/home/ubuntu/aws_ansible/client.pem'
                    sh 'cat $pem_value > /home/ubuntu/aws_ansible/client.pem'
            }
         }
