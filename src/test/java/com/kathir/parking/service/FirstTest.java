@@ -10,6 +10,6 @@ public class FirstTest {
     @Test
     public void test() {
         ParkingController parkingController=new ParkingController();
-        assertEquals(ParkingController.testString(), "ExampleTest Successfully comple");
+        assertEquals(ParkingController.testString(), "ExampleTest Successfully completed");
     }
 }

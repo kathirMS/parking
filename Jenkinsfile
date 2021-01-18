@@ -35,18 +35,13 @@ pipeline {
 
         }
 
-        stage('Sent Success Massage To GMail '){
-           steps{
-                emailext body: 'Hai kathir successfully deployed the application', subject: 'From Jenkins', to: 'kathirvelmuthusamy96@gmail.com'
-           }
-
-        }
 
 
     }
    post {
          always {
                  junit '**/target/surefire-reports/TEST-*.xml'
+                 emailext body: '"${currentBuild.result}"', subject: 'From Jenkins', to: 'kathirvelmuthusamy96@gmail.com'
          }
    }
 }
