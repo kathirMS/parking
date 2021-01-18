@@ -41,7 +41,13 @@ pipeline {
    post {
          always {
                  junit '**/target/surefire-reports/TEST-*.xml'
-                 emailext body: '"${currentBuild.result}"', subject: 'From Jenkins', to: 'kathirvelmuthusamy96@gmail.com'
+
+         }
+         success{
+              emailext body: 'build is successfully completed', subject: 'From Jenkins', to: 'kathirvelmuthusamy96@gmail.com'
+         }
+         failure{
+              emailext body: 'build is failure', subject: 'From Jenkins', to: 'kathirvelmuthusamy96@gmail.com'
          }
    }
 }
