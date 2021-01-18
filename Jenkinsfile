@@ -31,7 +31,7 @@ pipeline {
         stage("Ansible set ip address"){
            steps{
               sh script: $/
-                          sudo sed  -e'/minikube/ s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/'${public_ip}'/' /etc/ansible/hosts
+                          sudo sed -i -e'/minikube/ s/[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}\.[0-9]\{1,3\}/'${public_ip}'/' /etc/ansible/hosts
                     /$
            }
         }
