@@ -16,6 +16,7 @@ pipeline {
 
         stage('Docker build'){
           steps{
+               sh 'sudo chmod 777 /var/run/docker.sock'
                sh 'docker build -t parkinglotproblem:v1.0.1 --build-arg profile="${profile}" --build-arg mysql_url="${mysql_url}" --build-arg mysql_user_name="${mysql_user_name}" --build-arg mysql_password="${mysql_password}" .'
           }
 
