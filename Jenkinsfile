@@ -8,13 +8,12 @@ pipeline {
                   sh '''
                               #!/bin/bash
                               #check the mvn install or not
-                              if [ -d "/opt/apache-maven-3.6.3" ];
+                              if [[ $(mvn --version | grep "Apache Maven 3.6.3") = *"Apache Maven "* ]];
                                 then
-                                   echo "maven installed version 3.6.3";
+                                   echo "maven installed";
                                    mvn install
                                 else
-                                   echo "maven not installed 3.6.3";
-                                   mvn --version | grep "Apache Maven 3.6.3"
+                                   echo "maven not installed";
                                    exit 1
                               fi
 
