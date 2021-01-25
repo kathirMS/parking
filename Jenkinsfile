@@ -6,18 +6,14 @@ pipeline {
             steps {
 
                   sh '''
-                              #!/bin/bash
-                              #check the mvn install or not
-                              if [[ $(mvn --version | grep "Apache Maven 3.6.3") = *"Apache Maven "* ]];
-                                then
-                                   echo "maven installed";
-                                   mvn install
-                                else
-                                   echo "maven not installed";
-                                   exit 1
-                              fi
-
-
+                      #!/bin/bash
+                        dpkg -s maven &> /dev/null
+                        if [ $? -eq 0 ]; then
+                           echo "Package  is installed!"
+                        else
+                           echo "Package  is NOT installed!"
+                           exit 1
+                        fi
                   '''
             }
         }
